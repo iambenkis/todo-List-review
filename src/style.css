@@ -1,0 +1,124 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: #f1f2f5;
+}
+
+i {
+  color: #bbb;
+  cursor: pointer;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 9% auto;
+}
+
+.todo-box {
+  background-color: #fff;
+  width: 45%;
+  position: relative;
+  box-shadow: 10px 10px 15px rgba(34, 34, 34, 0.397);
+}
+
+.todo-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.todo-header p {
+  color: #222;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.todo-input {
+  position: relative;
+}
+
+.todo-input input {
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  outline: none;
+  color: #272727;
+}
+
+.todo-input i {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  cursor: pointer;
+}
+
+.task {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.task .task-label {
+  color: rgb(54, 54, 54);
+  margin-left: 0.7rem;
+  border: none;
+  outline: none;
+}
+
+.task i,
+.task input {
+  cursor: pointer;
+}
+
+.task .line {
+  text-decoration: line-through;
+  text-decoration-color: rgba(0, 0, 0, 0.596);
+  outline: none;
+  border: none;
+}
+
+.fa-check {
+  color: green;
+  display: none;
+}
+
+.checkbox {
+  display: inline-block;
+}
+
+.delete {
+  width: 100%;
+  padding: 1rem;
+  background-color: rgb(80, 80, 80);
+  color: #fff;
+  font-weight: 600;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  transition: 1s;
+}
+
+.delete:hover {
+  text-decoration: underline;
+}
+
+.task p {
+  background-color: rgb(165, 165, 165);
+  padding: 0.2rem 1rem;
+  border-radius: 20px;
+  color: rgb(255, 255, 255);
+  font-size: 0.7rem;
+  cursor: pointer;
+}
