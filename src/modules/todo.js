@@ -1,5 +1,6 @@
 import setStorage from "./setStorage.js";
 import getStorage from "./getStorage.js";
+import resetIndex from "./resetIndex.js";
 const taskContainer = document.querySelector('.task-container');
 
 export default class MyTodo {
@@ -18,21 +19,13 @@ export default class MyTodo {
     }
 
     remove = (id) => {
-      this.resetIndex();
+      resetIndex(this);
       this.tasks.forEach((task) => {
         if (task.index === Number(id)) {
           this.tasks
             .splice(task.index - 1, 1);
-          this.resetIndex();// Update of indexes after deleting
+          resetIndex(this);// Update of indexes after deleting
         }
-      });
-    }
-
-    resetIndex = () => {
-      let initialIndex = 1;
-      this.tasks.forEach((task) => {
-        task.index = initialIndex;
-        initialIndex += 1;
       });
     }
 
@@ -59,11 +52,11 @@ export default class MyTodo {
         </div>`;
 
     displayTasks = () => {
-      const checkboxes = document.querySelectorAll('.checkbox');  // variables at the top of the function
-      const taskLabel = taskContainer.querySelectorAll('.task-label');
       getStorage(this);
       taskContainer.innerHTML = '';
       this.tasks.forEach((task) => taskContainer.insertAdjacentHTML('beforeend', this.taskTemplate(task)));
+      const checkboxes = document.querySelectorAll('.checkbox');  // variables at the top of the function
+      const taskLabel = taskContainer.querySelectorAll('.task-label');
       checkboxes.forEach((checkbox, id) => {
         checkbox.addEventListener('change', () => {
           if (checkbox.checked) {

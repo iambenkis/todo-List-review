@@ -4,5 +4,4 @@ const getStorage = (obj) => {
       obj.tasks = JSON.parse(localStorage.getItem('tasks'));
     }
 };
-
 export default getStorage;
