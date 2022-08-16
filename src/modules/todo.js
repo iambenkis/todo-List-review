@@ -1,6 +1,7 @@
-import setStorage from "./setStorage.js";
-import getStorage from "./getStorage.js";
-import resetIndex from "./resetIndex.js";
+import setStorage from './setStorage.js';
+import getStorage from './getStorage.js';
+import resetIndex from './resetIndex.js';
+
 const taskContainer = document.querySelector('.task-container');
 
 export default class MyTodo {
@@ -55,7 +56,7 @@ export default class MyTodo {
       getStorage(this);
       taskContainer.innerHTML = '';
       this.tasks.forEach((task) => taskContainer.insertAdjacentHTML('beforeend', this.taskTemplate(task)));
-      const checkboxes = document.querySelectorAll('.checkbox');  // variables at the top of the function
+      const checkboxes = document.querySelectorAll('.checkbox'); // variables at the top of the function
       const taskLabel = taskContainer.querySelectorAll('.task-label');
       checkboxes.forEach((checkbox, id) => {
         checkbox.addEventListener('change', () => {

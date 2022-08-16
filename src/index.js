@@ -1,5 +1,6 @@
 import MyTodo from './modules/todo.js';
 import cleanCompleted from './modules/cleanCompeted.js';
+
 const taskContainer = document.querySelector('.task-container');
 const taskEntered = document.querySelector('.in-task');
 const submitTask = document.querySelector('.fa-left-long');

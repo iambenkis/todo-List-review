@@ -35,5 +35,6 @@
   "bugs": {
     "url": "https://github.com/iambenkis/To-Do-list/issues"
   },
-  "homepage": "https://github.com/iambenkis/To-Do-list#readme"
+  "homepage": "https://github.com/iambenkis/To-Do-list#readme",
+  "main": "webpack.config.js"
 }
