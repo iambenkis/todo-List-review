@@ -1,3 +1,5 @@
+import setStorage from "./setStorage.js";
+import getStorage from "./getStorage.js";
 const taskContainer = document.querySelector('.task-container');
 
 export default class MyTodo {
@@ -12,7 +14,7 @@ export default class MyTodo {
         index: this.tasks.length + 1,
       };
       this.tasks.push(myTask);
-      this.setStorage();
+      setStorage(this.tasks);
     }
 
     remove = (id) => {
@@ -36,7 +38,7 @@ export default class MyTodo {
 
     cleanCompleted = () => {
       this.tasks = this.tasks.filter((task) => task.completed === false);
-      this.setStorage();
+      setStorage(this.tasks);
     }
 
     taskTemplate = (task) => `
@@ -57,12 +59,11 @@ export default class MyTodo {
         </div>`;
 
     displayTasks = () => {
-      this.getStorage();
-      taskContainer.innerHTML = '';
-      this.tasks
-        .forEach((task) => taskContainer.insertAdjacentHTML('beforeend', this.taskTemplate(task)));
-      const checkboxes = document.querySelectorAll('.checkbox');
+      const checkboxes = document.querySelectorAll('.checkbox');  // variables at the top of the function
       const taskLabel = taskContainer.querySelectorAll('.task-label');
+      getStorage(this);
+      taskContainer.innerHTML = '';
+      this.tasks.forEach((task) => taskContainer.insertAdjacentHTML('beforeend', this.taskTemplate(task)));
       checkboxes.forEach((checkbox, id) => {
         checkbox.addEventListener('change', () => {
           if (checkbox.checked) {
@@ -73,7 +74,7 @@ export default class MyTodo {
               }
               return task;
             });
-            this.setStorage();
+            setStorage(this.tasks);
           } else {
             taskLabel[id]?.classList.remove('line');
             this.tasks = this.tasks.map((task) => {
@@ -82,7 +83,7 @@ export default class MyTodo {
               }
               return task;
             });
-            this.setStorage();
+            setStorage(this.tasks);
           }
         });
       });
@@ -93,7 +94,7 @@ export default class MyTodo {
           e.preventDefault();
           const { id } = e.currentTarget;
           this.remove(id);
-          this.setStorage();
+          setStorage(this.tasks);
           taskContainer.innerHTML = '';
           this.displayTasks(this.tasks);
         });
@@ -103,19 +104,8 @@ export default class MyTodo {
         textarea.addEventListener('change', () => {
           const result = this.tasks.filter((task) => task.index === Number(textarea.id));
           this.tasks[result[0].index - 1].description = textarea.value;
-          this.setStorage();
+          setStorage(this.tasks);
         });
       });
     }
-
-    setStorage = () => {
-      const formData = JSON.stringify(this.tasks);
-      localStorage.setItem('tasks', formData);
-    };
-
-    getStorage = () => {
-      if (localStorage.getItem('tasks')) {
-        this.tasks = JSON.parse(localStorage.getItem('tasks'));
-      }
-    };
 }

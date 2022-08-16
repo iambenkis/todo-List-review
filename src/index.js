@@ -1,4 +1,3 @@
-import './style.css';
 import MyTodo from './modules/todo.js';
 
 const taskContainer = document.querySelector('.task-container');
